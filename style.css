@@ -13,7 +13,6 @@ body { background-color: #1a1a1a; color: #f0f0f0; font-family: sans-serif; }
 
 .game-card, .game-card-horizontal, #contact-form { background-color: #2a2a2a; border: 4px solid #111; box-shadow: 5px 5px 0px #000; }
 .game-card, .game-card-horizontal { text-decoration: none; color: #fff; transition: all 0.1s ease-out; }
-/* Neon parlama efekti burada */
 .game-card:hover, .game-card-horizontal:hover { transform: translate(2px, 2px); box-shadow: 3px 3px 0px #000, 0 0 15px #00ff00; filter: brightness(1.1); }
 
 h2, .detail-info h3, .form-group label { font-family: 'Press Start 2P', cursive; color: #00ff00; }
@@ -88,3 +87,21 @@ h2 { font-size: 2rem; text-align: center; margin-bottom: 40px; }
 
 #contact-form { max-width: 800px; margin: 0 auto; padding: 30px; }
 .form-group { margin-bottom: 25px; }
+
+@media (max-width: 992px) {
+    .detail-grid {grid-template-columns: 1fr;}#filter-bar .container {flex-direction: column;align-items: stretch;}.search-input, .filter-select {width: 100%;}
+}
+
+@media (max-width: 768px) {
+    .main-header .container {flex-direction: column;gap: 15px;}.hero-content h1 {font-size: 2.5rem;}
+    .hero-content p {font-size: 1.5rem;} h2 {font-size: 1.8rem;}.hero-button {font-size: 1.5rem;}
+}
+
+@media (max-width: 600px) {
+    #logo {font-size: 1.5rem; text-shadow: 2px 2px 0px #ff00ff;} .main-nav ul {flex-direction: column;width: 100%;gap: 10px;}
+    .main-nav li {margin-left: 0;width: 100%;} .nav-button { display: block; text-align: center; width: 100%;}.hero-content h1 {font-size: 2rem;}
+    .spec-table, .spec-table tr, .spec-table td {display: block;width: 100%;}
+    .spec-table tr {border-bottom: none;margin-bottom: 15px;padding-bottom: 15px;border-bottom: 3px solid #333;}.spec-table tr:last-child {border-bottom: none;margin-bottom: 0;padding-bottom: 0;}
+    .spec-table td:first-child {width: auto; font-weight: bold; color: #aaa;}.spec-table td:last-child {padding-left: 10px;}
+    h2 { font-size: 1.5rem; } .detail-info h3 { font-size: 1.2rem; } .game-card h3 { font-size: 1.8rem; } .game-card .game-price { font-size: 1.5rem; } .play-button { font-size: 1.2rem; }
+}
