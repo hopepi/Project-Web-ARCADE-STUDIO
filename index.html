@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hope's Arcade | Umut'un Retro Mağazası</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" id="logo">HOPE'S ARCADE</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="store.html" class="nav-button">Mağaza</a></li>
+                    <li><a href="library.html" class="nav-button">Kütüphanem</a></li>
+                    <li><a href="contact.html" class="nav-button">Destek</a></li>
+                </ul>
+            </nav>
+            <div class="header-extra">
+                <a href="#" class="nav-button cart">Sepet (0)</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            
+            <video playsinline autoplay muted loop id="hero-video">
+                <source src="video.mp4" type="video/mp4">
+            </video>
+            
+            <div class="hero-content">
+                <h1>NOSTALJİ YÜKLENİYOR...</h1>
+                <p>-----------------------</p>
+                <a href="store.html" class="hero-button">Mağazayı Keşfet</a>
+            </div>
+        </section>
+
+        <section id="featured">
+            <div class="container">
+                <h2>Öne Çıkanlar</h2>
+                <div class="game-grid">
+                    
+                    <a href="game-detail.html" class="game-card">
+                        <img src="Mega_Man.png" alt="Mega Man">
+                        <h3>Mega Man</h3>
+                        <span class="game-price">10 TL</span>
+                    </a>
+                    
+                    <a href="game-detail.html" class="game-card">
+                        <img src="Space_Invaders.png" alt="Zelda"> 
+                        <h3>Space Invaders</h3>
+                        <span class="game-price">15 TL</span>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="best-sellers">
+            <div class="container">
+                <h2>En Çok Satanlar</h2>
+                <div class="horizontal-scroll">
+                    
+                    <a href="game-detail.html" class="game-card-horizontal">
+                        <img src="Out_Run.png" alt="Out Run">
+                        <h4>Out Run</h4>
+                    </a>
+
+                    <a href="game-detail.html" class="game-card-horizontal">
+                        <img src="Super_Mario_Bros.png" alt="Super Mario Bros.">
+                        <h4>Super Mario Bros.</h4>
+                    </a>
+
+                    <a href="game-detail.html" class="game-card-horizontal">
+                        <img src="Pac-Man.png" alt="Pac-Man">
+                        <h4>Pac-Man</h4>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 HOPE'S ARCADE. Tüm hakları saklıdır.</p>
+    </footer>
+
+</body>
+</html>
