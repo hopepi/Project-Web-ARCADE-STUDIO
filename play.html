@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oyun Oyna | Hope's Arcade</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" id="logo">HOPE'S ARCADE</a>
+            <div class="header-extra">
+                <a href="library.html" class="nav-button" style="background:red; color:white;">ÇIKIŞ (ESC)</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="back-bar">
+                <h2 id="game-title" style="margin:0;">YÜKLENİYOR...</h2>
+                <span class="loading-text">// SİMÜLASYON BAŞLATILIYOR //</span>
+            </div>
+        </div>
+
+        <div id="game-wrapper">
+            <iframe id="game-frame" src="" allowfullscreen scrolling="no"></iframe>
+        </div>
+        
+        <div class="container">
+            <p style="text-align:center; color:#555; font-family:'VT323'; margin-top:10px;">
+                Kontroller: Yön Tuşları, Z (A), X (B), Enter (Start), Shift (Select)
+            </p>
+        </div>
+    </main>
+
+    <script src="data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const gameId = parseInt(params.get('id'));
+            const game = games.find(g => g.id === gameId);
+
+            if(game && game.playUrl) {
+                document.title = `${game.title} - Oynanıyor`;
+                document.getElementById('game-title').innerText = game.title;
+                
+                const iframe = document.getElementById('game-frame');
+                iframe.src = game.playUrl;
+
+                if (game.embedWidth) iframe.style.width = game.embedWidth;
+                if (game.embedHeight) iframe.style.height = game.embedHeight;
+
+                iframe.onload = function() { iframe.focus(); };
+
+                window.addEventListener("keydown", function(e) {
+                    if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+                        e.preventDefault();
+                    }
+                }, false);
+
+            } else {
+                document.getElementById('game-wrapper').innerHTML = 
+                    '<h2 style="color:red; font-family:\'VT323\'; font-size:2rem; text-align:center; padding-top:100px;">KASET BOZUK! (Oyun Bulunamadı)</h2>';
+            }
+        });
+    </script>
+</body>
+</html>

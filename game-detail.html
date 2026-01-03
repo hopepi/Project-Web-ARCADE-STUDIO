@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mega Man | Hope's Arcade</title>
+    <title>Oyun Detayı | Hope's Arcade</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +23,7 @@
                 </ul>
             </nav>
             <div class="header-extra">
-                <a href="#" class="nav-button cart">Sepet (0)</a>
+                <a href="cart.html" class="nav-button cart">Sepet (0)</a>
             </div>
         </div>
     </header>
@@ -31,7 +31,7 @@
     <main>
         <section id="page-header">
             <div class="container">
-                <h2>// MEGA MAN //</h2>
+                <h2>YÜKLENİYOR...</h2>
             </div>
         </section>
 
@@ -40,46 +40,67 @@
                 <div class="detail-grid">
                     
                     <div class="detail-media">
-                        <img src="Mega_Man.png" alt="Mega Man" class="detail-cover">
-                        <a href="#" class="hero-button buy-button">SATIN AL (10 TL)</a>
+                        <img src="" alt="Oyun Kapak" class="detail-cover">
+                        <a href="#" class="hero-button buy-button">SATIN AL</a>
                     </div>
                     
                     <div class="detail-info">
                         <h3>Hakkında</h3>
-                        <p>
-                            Mega Man (Japonya'da Rockman olarak bilinir), Capcom tarafından 
-                            NES için geliştirilen bir 1987 aksiyon-platform oyunudur. 
-                            Dr. Wily'nin dünyayı ele geçirme planlarını durdurun!
-                        </p>
+                        <p>Oyun bilgileri yükleniyor...</p>
                         
                         <h3>Sistem Gereksinimleri</h3>
                         <table class="spec-table">
-                            <tr>
-                                <td>İşletim Sistemi:</td>
-                                <td>PixelOS 3.0</td>
-                            </tr>
-                            <tr>
-                                <td>İşlemci:</td>
-                                <td>8-bit 1.79 MHz</td>
-                            </tr>
-                            <tr>
-                                <td>Bellek:</td>
-                                <td>2 KB RAM</td>
-                            </tr>
-                            <tr>
-                                <td>Depolama:</td>
-                                <td>256 KB</td>
-                            </tr>
                         </table>
                     </div>
                 </div>
             </div>
         </section>
-    </main>
+
+        <section id="reviews">
+            <div class="container review-container">
+                <h2 style="text-align:left;">// OYUNCU YORUMLARI //</h2>
+                
+                <div class="review-form-box">
+                    <h3 style="color:#fff; margin-bottom:20px; font-family:'VT323'; font-size:1.8rem;">Bir yorum bırak:</h3>
+                    <form id="review-form">
+                        <div class="form-group">
+                            <label for="review-name">Kullanıcı Adı:</label>
+                            <input type="text" id="review-name" class="form-input" placeholder="Anonim Oyuncu" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="review-rating">Puanın:</label>
+                            <select id="review-rating" class="rating-select">
+                                <option value="5">★★★★★ (Efsane)</option>
+                                <option value="4">★★★★☆ (Çok İyi)</option>
+                                <option value="3">★★★☆☆ (İdare Eder)</option>
+                                <option value="2">★★☆☆☆ (Kötü)</option>
+                                <option value="1">★☆☆☆☆ (Berbat)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="review-text">Yorumun:</label>
+                            <textarea id="review-text" rows="3" class="form-input" placeholder="Bu oyun hakkında ne düşünüyorsun?" required></textarea>
+                        </div>
+
+                        <button type="submit" class="hero-button" style="width:100%;">YORUMU GÖNDER</button>
+                    </form>
+                </div>
+
+                <div id="review-list">
+                    </div>
+            </div>
+        </section>
+        </main>
 
     <footer class="main-footer">
         <p>&copy; 2025 HOPE'S ARCADE. Tüm hakları saklıdır.</p>
     </footer>
+
+    <script src="data.js"></script>
+    <script src="main.js"></script>
+    <script src="detail.js"></script>
 
 </body>
 </html>

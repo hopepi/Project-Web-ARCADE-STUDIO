@@ -1,107 +1,802 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&display=swap');
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { background-color: #1a1a1a; color: #f0f0f0; font-family: sans-serif; }
-.container { width: 90%; max-width: 1200px; margin: 0 auto; }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-.nav-button, .hero-button, .play-button { font-family: 'VT323', monospace; text-decoration: none; border: 3px solid #111; box-shadow: 4px 4px 0px #000; border-radius: 0; transition: all 0.1s ease-out; }
-.nav-button:hover, .hero-button:hover, .play-button:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0px #000; }
+body {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+    font-family: sans-serif;
+    overflow-x: hidden;
+}
 
-.search-input, .filter-select, .form-input { font-family: 'VT323', monospace; font-size: 1.3rem; color: #f0f0f0; background-color: #333; border: 3px solid #111; box-shadow: 4px 4px 0px #000; border-radius: 0; padding: 10px; }
-.search-input::placeholder { color: #aaa; }
-.form-input { width: 100%; } 
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 5;
+}
 
-.game-card, .game-card-horizontal, #contact-form { background-color: #2a2a2a; border: 4px solid #111; box-shadow: 5px 5px 0px #000; }
-.game-card, .game-card-horizontal { text-decoration: none; color: #fff; transition: all 0.1s ease-out; }
-.game-card:hover, .game-card-horizontal:hover { transform: translate(2px, 2px); box-shadow: 3px 3px 0px #000, 0 0 15px #00ff00; filter: brightness(1.1); }
+.crt-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none; 
+    z-index: 9999;
+    animation: flicker 0.15s infinite;
+}
 
-h2, .detail-info h3, .form-group label { font-family: 'Press Start 2P', cursive; color: #00ff00; }
-h2 { font-size: 2rem; text-align: center; margin-bottom: 40px; }
-.detail-info h3 { font-size: 1.5rem; margin-bottom: 15px; }
-.form-group label { display: block; font-size: 1rem; margin-bottom: 10px; }
+@keyframes flicker {
+    0% { opacity: 0.97; }
+    50% { opacity: 1; }
+    100% { opacity: 0.98; }
+}
 
-.game-card img, .game-card-horizontal img, .detail-cover { image-rendering: pixelated; width: 100%; }
-.game-card img, .game-card-horizontal img { height: 250px; object-fit: cover; display: block; }
-.game-card-horizontal img { height: 150px; }
+.nav-button,
+.hero-button,
+.play-button {
+    font-family: 'VT323', monospace;
+    text-decoration: none;
+    border: 3px solid #111;
+    box-shadow: 4px 4px 0px #000;
+    border-radius: 0;
+    transition: all 0.1s ease-out;
+    cursor: pointer;
+    display: inline-block;
+}
 
-.nav-button { font-size: 1.5rem; color: #fff; padding: 10px 15px; background-color: #333; }
-.nav-button:hover { background-color: #ff00ff; color: #fff; }
-.main-nav .nav-button.active { background-color: #ff00ff; color: #fff; transform: translate(2px, 2px); box-shadow: 2px 2px 0px #000; }
-.header-extra .cart { background-color: #00ff00; color: #111; font-weight: bold; }
-.header-extra .cart:hover { background-color: #fff; }
+.nav-button:hover,
+.hero-button:hover,
+.play-button:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px #000;
+}
 
-.hero-button { font-size: 2rem; background-color: #ffc600; color: #111; padding: 15px 30px; }
-.hero-button:hover { background-color: #fff; }
-.play-button { display: block; font-family: 'Press Start 2P', cursive; font-size: 1.5rem; padding: 15px; margin: 15px; text-align: center; background-color: #00ff00; color: #111; font-weight: bold; }
-.play-button:hover { background-color: #fff; }
+.search-input,
+.filter-select,
+.form-input {
+    font-family: 'VT323', monospace;
+    font-size: 1.3rem;
+    color: #f0f0f0;
+    background-color: #333;
+    border: 3px solid #111;
+    box-shadow: 4px 4px 0px #000;
+    border-radius: 0;
+    padding: 10px;
+}
 
-.main-header { background-color: #222; border-bottom: 4px solid #111; padding: 15px 0; }
-.main-header .container { display: flex; justify-content: space-between; align-items: center; }
-#logo { font-family: 'Press Start 2P', cursive; font-size: 1.8rem; color: #00ff00; text-decoration: none; text-shadow: 3px 3px 0px #ff00ff; }
-.main-nav ul { list-style: none; display: flex; }
-.main-nav li { margin-left: 15px; }
+.search-input::placeholder {
+    color: #aaa;
+}
 
-#hero { height: 60vh; display: flex; justify-content: center; align-items: center; text-align: center; border-bottom: 4px solid #111; position: relative; overflow: hidden;}
+.form-input {
+    width: 100%;
+}
 
-.hero-content { position: relative; z-index: 2; }
+/* --- OYUN KARTLARI (HİZALAMA DÜZELTİLDİ) --- */
+.game-card,
+.game-card-horizontal,
+#contact-form {
+    background-color: #2a2a2a;
+    border: 4px solid #111;
+    box-shadow: 5px 5px 0px #000;
+    position: relative;
+}
 
-.hero-content h1 { font-family: 'Press Start 2P', cursive; font-size: 3rem; color: #fff; text-shadow: 4px 4px 0px #ff00ff; margin-bottom: 20px; }
-.hero-content p { font-family: 'VT323', monospace; font-size: 1.8rem; color: #ccc; margin-bottom: 30px; }
+.game-card-horizontal {
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.1s ease-out;
+    display: block;
+}
 
-#hero-video {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); min-width: 100%; min-height: 100%; width: auto; height: auto; z-index: 1; filter: brightness(0.4); }
+.game-card {
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.1s ease-out;
+    
+    display: flex;
+    flex-direction: column;
+    height: 100%; 
+}
 
-#featured, #best-sellers, #store-grid, #library-grid, #detail-layout, #contact-form-layout { padding: 50px 0; }
+.game-card:hover,
+.game-card-horizontal:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0px #000, 0 0 15px #00ff00;
+    filter: brightness(1.1);
+}
 
-.game-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 30px; }
-.game-card h3 { font-family: 'VT323', monospace; font-size: 2rem; padding: 15px; }
-.game-card .game-price { display: block; font-family: 'VT323', monospace; font-size: 1.8rem; font-weight: bold; color: #00ff00; padding: 0 15px 15px; }
+.game-card .play-button,
+.game-card .game-price {
+    margin-top: auto; 
+}
 
-.horizontal-scroll { display: flex; overflow-x: auto; scrollbar-width: thin; scrollbar-color: #00ff00 #111; }
-.horizontal-scroll::-webkit-scrollbar { height: 12px; }
-.horizontal-scroll::-webkit-scrollbar-track { background: #111; border: 2px solid #000; }
-.horizontal-scroll::-webkit-scrollbar-thumb { background-color: #00ff00; border-radius: 0; border: 2px solid #000; }
-.game-card-horizontal { flex: 0 0 250px; margin-right: 25px; margin-bottom: 10px; }
-.game-card-horizontal h4 { font-family: 'VT323', monospace; font-size: 1.8rem; padding: 15px; }
+.wishlist-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #111;
+    color: #555;
+    border: 2px solid #fff;
+    width: 35px;
+    height: 35px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-.main-footer { background-color: #111; text-align: center; padding: 30px 20px; margin-top: 50px; border-top: 4px solid #000; }
-.main-footer p { font-family: 'VT323', monospace; font-size: 1.2rem; color: #888; }
+.wishlist-btn:hover {
+    color: #ff0000;
+    border-color: #ff0000;
+}
 
-#page-header { background-color: #111; padding: 40px 0; text-align: center; border-bottom: 4px solid #000; }
-#page-header h2 { margin-bottom: 10px; }
-#page-header p { font-family: 'VT3323', monospace; font-size: 1.5rem; color: #aaa; }
+.wishlist-btn.active {
+    color: #ff0000;
+    border-color: #ff0000;
+    background: #fff;
+}
 
-#filter-bar { background-color: #222; padding: 20px 0; border-bottom: 4px solid #111; }
-#filter-bar .container { display: flex; justify-content: center; align-items: center; gap: 20px; }
+h2,
+.detail-info h3,
+.form-group label {
+    font-family: 'Press Start 2P', cursive;
+    color: #00ff00;
+}
 
-.detail-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; }
-.detail-cover { border: 4px solid #111; box-shadow: 5px 5px 0px #000; }
-.buy-button { width: 100%; text-align: center; margin-top: 20px; }
-.detail-info p { font-family: 'VT323', monospace; font-size: 1.5rem; color: #ccc; line-height: 1.6; margin-bottom: 30px; }
+h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 40px;
+}
 
-.spec-table { width: 100%; border-collapse: collapse; font-family: 'VT323', monospace; font-size: 1.4rem; }
-.spec-table tr { border-bottom: 3px solid #333; }
-.spec-table tr:last-child { border-bottom: none; }
-.spec-table td { padding: 10px 5px; }
-.spec-table td:first-child { color: #aaa; width: 40%; }
-.spec-table td:last-child { color: #fff; font-weight: bold; }
+.detail-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
 
-#contact-form { max-width: 800px; margin: 0 auto; padding: 30px; }
-.form-group { margin-bottom: 25px; }
+.form-group label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.game-card img,
+.game-card-horizontal img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;  
+    display: block;
+    image-rendering: pixelated;
+}
+
+.game-card-horizontal img {
+    height: 150px;
+}
+
+.detail-cover {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    image-rendering: pixelated;
+    border: 4px solid #111;
+    box-shadow: 5px 5px 0px #000;
+}
+
+.nav-button {
+    font-size: 1.5rem;
+    color: #fff;
+    padding: 10px 15px;
+    background-color: #333;
+}
+
+.nav-button:hover {
+    background-color: #ff00ff;
+    color: #fff;
+}
+
+.main-nav .nav-button.active {
+    background-color: #ff00ff;
+    color: #fff;
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px #000;
+}
+
+.header-extra .cart {
+    background-color: #00ff00;
+    color: #111;
+    font-weight: bold;
+}
+
+.header-extra .cart:hover {
+    background-color: #fff;
+}
+
+.hero-button {
+    font-size: 2rem;
+    background-color: #ffc600;
+    color: #111;
+    padding: 15px 30px;
+}
+
+.hero-button:hover {
+    background-color: #fff;
+}
+
+.play-button {
+    display: block;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.5rem;
+    padding: 15px;
+    margin: 15px;
+    text-align: center;
+    background-color: #00ff00;
+    color: #111;
+    font-weight: bold;
+}
+
+.play-button:hover {
+    background-color: #fff;
+}
+
+.main-header {
+    background-color: #222;
+    border-bottom: 4px solid #111;
+    padding: 15px 0;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#logo {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.8rem;
+    color: #00ff00;
+    text-decoration: none;
+    text-shadow: 3px 3px 0px #ff00ff;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.main-nav li {
+    margin-left: 15px;
+}
+
+#hero {
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-bottom: 4px solid #111;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 3rem;
+    color: #fff;
+    text-shadow: 4px 4px 0px #ff00ff;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-family: 'VT323', monospace;
+    font-size: 1.8rem;
+    color: #ccc;
+    margin-bottom: 30px;
+}
+
+#hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 1;
+    filter: brightness(0.4);
+}
+
+#featured,
+#best-sellers,
+#store-grid,
+#library-grid,
+#detail-layout,
+#contact-form-layout {
+    padding: 50px 0;
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 30px;
+}
+
+.game-card h3 {
+    font-family: 'VT323', monospace;
+    font-size: 2rem;
+    padding: 15px;
+}
+
+.game-card .game-price {
+    display: block;
+    font-family: 'VT323', monospace;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #00ff00;
+    padding: 0 15px 15px;
+}
+
+.horizontal-scroll {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #00ff00 #111;
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+    height: 12px;
+}
+
+.horizontal-scroll::-webkit-scrollbar-track {
+    background: #111;
+    border: 2px solid #000;
+}
+
+.horizontal-scroll::-webkit-scrollbar-thumb {
+    background-color: #00ff00;
+    border-radius: 0;
+    border: 2px solid #000;
+}
+
+.game-card-horizontal {
+    flex: 0 0 250px;
+    margin-right: 25px;
+    margin-bottom: 10px;
+}
+
+.game-card-horizontal h4 {
+    font-family: 'VT323', monospace;
+    font-size: 1.8rem;
+    padding: 15px;
+}
+
+.main-footer {
+    background-color: #111;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 50px;
+    border-top: 4px solid #000;
+}
+
+.main-footer p {
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    color: #888;
+}
+
+#page-header {
+    background-color: #111;
+    padding: 40px 0;
+    text-align: center;
+    border-bottom: 4px solid #000;
+}
+
+#page-header h2 {
+    margin-bottom: 10px;
+}
+
+#page-header p {
+    font-family: 'VT3323', monospace;
+    font-size: 1.5rem;
+    color: #aaa;
+}
+
+#filter-bar {
+    background-color: #222;
+    padding: 20px 0;
+    border-bottom: 4px solid #111;
+}
+
+#filter-bar .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+}
+
+.buy-button {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.detail-info p {
+    font-family: 'VT323', monospace;
+    font-size: 1.5rem;
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'VT323', monospace;
+    font-size: 1.4rem;
+}
+
+.spec-table tr {
+    border-bottom: 3px solid #333;
+}
+
+.spec-table tr:last-child {
+    border-bottom: none;
+}
+
+.spec-table td {
+    padding: 10px 5px;
+}
+
+.spec-table td:first-child {
+    color: #aaa;
+    width: 40%;
+}
+
+.spec-table td:last-child {
+    color: #fff;
+    font-weight: bold;
+}
+
+#contact-form {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.cursor {
+    display: inline-block;
+    width: 15px;
+    height: 3rem;
+    background-color: #00ff00;
+    margin-left: 5px;
+    vertical-align: bottom;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.badges-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.badge-card {
+    background: #222;
+    border: 3px solid #ffc600;
+    padding: 20px;
+    text-align: center;
+    width: 200px;
+    box-shadow: 4px 4px 0 #000;
+    transition: transform 0.2s;
+}
+
+.badge-card:hover {
+    transform: scale(1.05);
+}
+
+.badge-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.badge-title {
+    font-family: 'Press Start 2P';
+    font-size: 0.8rem;
+    color: #ffc600;
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+
+.badge-desc {
+    font-family: 'VT323';
+    font-size: 1.2rem;
+    color: #aaa;
+}
+
+#toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10000;
+}
+
+.toast {
+    font-family: 'VT323', monospace;
+    font-size: 1.5rem;
+    background-color: #111;
+    color: #00ff00;
+    border: 3px solid #00ff00;
+    box-shadow: 4px 4px 0px #000;
+    padding: 15px 20px;
+    margin-top: 10px;
+    min-width: 250px;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.5s ease;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+#reviews {
+    padding: 50px 0;
+    border-top: 4px solid #111;
+    background-color: #1a1a1a;
+}
+
+.review-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.review-form-box {
+    background-color: #222;
+    padding: 25px;
+    border: 4px solid #111;
+    box-shadow: 6px 6px 0px #000;
+    margin-bottom: 40px;
+}
+
+.rating-select {
+    font-family: 'VT323', monospace;
+    font-size: 1.3rem;
+    padding: 10px;
+    background: #333;
+    color: #ffc600;
+    border: 3px solid #111;
+    cursor: pointer;
+}
+
+.review-item {
+    background-color: #2a2a2a;
+    border: 3px solid #111;
+    margin-bottom: 20px;
+    padding: 15px;
+    position: relative;
+    box-shadow: 4px 4px 0px #000;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px dashed #444;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.review-user {
+    color: #00ff00;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8rem;
+}
+
+.review-stars {
+    color: #ffc600;
+    font-size: 1.2rem;
+}
+
+.review-text {
+    font-family: 'VT323', monospace;
+    font-size: 1.4rem;
+    color: #ddd;
+    line-height: 1.4;
+}
+
+.no-reviews {
+    text-align: center;
+    color: #555;
+    font-family: 'VT323';
+    font-size: 1.5rem;
+}
+
+#game-wrapper {
+    width: 100%;
+    height: 85vh;
+    background-color: #050505;
+    border-top: 4px solid #333;
+    border-bottom: 4px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 100px #000;
+}
+
+iframe {
+    border: 4px solid #444;
+    box-shadow: 0 0 40px #000;
+    background-color: #000;
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.back-bar {
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.loading-text {
+    color: #00ff00;
+    font-family: 'VT323', monospace;
+    font-size: 1.5rem;
+    animation: blink 1s infinite;
+}
 
 @media (max-width: 992px) {
-    .detail-grid {grid-template-columns: 1fr;}#filter-bar .container {flex-direction: column;align-items: stretch;}.search-input, .filter-select {width: 100%;}
+    .detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #filter-bar .container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-input,
+    .filter-select {
+        width: 100%;
+    }
 }
 
 @media (max-width: 768px) {
-    .main-header .container {flex-direction: column;gap: 15px;}.hero-content h1 {font-size: 2.5rem;}
-    .hero-content p {font-size: 1.5rem;} h2 {font-size: 1.8rem;}.hero-button {font-size: 1.5rem;}
+    .main-header .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .hero-button {
+        font-size: 1.5rem;
+    }
 }
 
 @media (max-width: 600px) {
-    #logo {font-size: 1.5rem; text-shadow: 2px 2px 0px #ff00ff;} .main-nav ul {flex-direction: column;width: 100%;gap: 10px;}
-    .main-nav li {margin-left: 0;width: 100%;} .nav-button { display: block; text-align: center; width: 100%;}.hero-content h1 {font-size: 2rem;}
-    .spec-table, .spec-table tr, .spec-table td {display: block;width: 100%;}
-    .spec-table tr {border-bottom: none;margin-bottom: 15px;padding-bottom: 15px;border-bottom: 3px solid #333;}.spec-table tr:last-child {border-bottom: none;margin-bottom: 0;padding-bottom: 0;}
-    .spec-table td:first-child {width: auto; font-weight: bold; color: #aaa;}.spec-table td:last-child {padding-left: 10px;}
-    h2 { font-size: 1.5rem; } .detail-info h3 { font-size: 1.2rem; } .game-card h3 { font-size: 1.8rem; } .game-card .game-price { font-size: 1.5rem; } .play-button { font-size: 1.2rem; }
+    #logo {
+        font-size: 1.5rem;
+        text-shadow: 2px 2px 0px #ff00ff;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .main-nav li {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .nav-button {
+        display: block;
+        text-align: center;
+        width: 100%;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .spec-table,
+    .spec-table tr,
+    .spec-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .spec-table tr {
+        border-bottom: none;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 3px solid #333;
+    }
+
+    .spec-table tr:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .spec-table td:first-child {
+        width: auto;
+        font-weight: bold;
+        color: #aaa;
+    }
+
+    .spec-table td:last-child {
+        padding-left: 10px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .detail-info h3 {
+        font-size: 1.2rem;
+    }
+
+    .game-card h3 {
+        font-size: 1.8rem;
+    }
+
+    .game-card .game-price {
+        font-size: 1.5rem;
+    }
+
+    .play-button {
+        font-size: 1.2rem;
+    }
 }

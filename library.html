@@ -29,28 +29,31 @@
     </header>
 
     <main>
-        <section id="page-header">
+        <section id="badges-section" style="padding-top: 40px;">
             <div class="container">
-                <h2>// KÜTÜPHANEM //</h2>
-                <p>Sahip olduğun (sözde) oyunlar.</p>
+                <h2 style="font-size: 1.5rem; text-align: left;">// ROZETLERİM //</h2>
+                <div id="badge-grid" class="badges-container">
+                    </div>
             </div>
         </section>
 
-        <section id="library-grid"> <div class="container">
-                <div class="game-grid">
-                    
-                    <div class="game-card"> <img src="Mega_Man.png" alt="Mega Man">
-                        <h3>Mega Man</h3>
-                        <a href="#" class="play-button">OYNA</a>
-                    </div>
+        <section id="page-header">
+            <div class="container">
+                <h2>// OYUNLARIM //</h2>
+                <p>Kasetlerini üflemeden takma.</p>
+            </div>
+        </section>
 
-                    <div class="game-card">
-                        <img src="Pac-Man.png" alt="Pac-Man">
-                        <h3>Pac-Man</h3>
-                        <a href="#" class="play-button">OYNA</a>
-                    </div>
-                    
-                </div>
+        <section id="library-grid">
+            <div class="container">
+                <div id="my-games" class="game-grid"></div>
+            </div>
+        </section>
+
+        <section id="wishlist-section" style="padding: 50px 0; border-top: 4px solid #111; background: #222;">
+            <div class="container">
+                <h2 style="color: #ff00ff;">♥ İSTEK LİSTEM</h2>
+                <div id="wishlist-grid" class="game-grid"></div>
             </div>
         </section>
     </main>
@@ -58,6 +61,10 @@
     <footer class="main-footer">
         <p>&copy; 2025 HOPE'S ARCADE. Tüm hakları saklıdır.</p>
     </footer>
+
+    <script src="data.js"></script>
+    <script src="main.js"></script>
+    <script src="library.js"></script>
 
 </body>
 </html>
